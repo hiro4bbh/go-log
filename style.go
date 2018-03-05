@@ -30,9 +30,8 @@ const (
 func (style Style) Bold(bold bool) Style {
 	if bold {
 		return style | Bold
-	} else {
-		return style & ^Bold
 	}
+	return style & ^Bold
 }
 
 // IsBold returns true for bold Styles.
@@ -44,9 +43,8 @@ func (style Style) IsBold() bool {
 func (style Style) Underline(underline bool) Style {
 	if underline {
 		return style | Underline
-	} else {
-		return style & ^Underline
 	}
+	return style & ^Underline
 }
 
 // IsUnderline returns true for underline Styles.
