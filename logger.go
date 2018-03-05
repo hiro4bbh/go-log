@@ -209,4 +209,7 @@ func init() {
 	if err == nil {
 		DefaultMinLevel = level
 	}
+	if format := os.Getenv("GOLOG_TIMEFORMAT"); format != "" {
+		DefaultTimeFormat = format
+	}
 }
