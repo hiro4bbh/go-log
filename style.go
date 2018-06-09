@@ -2,6 +2,7 @@ package golog
 
 import (
 	"fmt"
+	"io"
 )
 
 // Style has the font color and decoration information.
@@ -55,6 +56,15 @@ func (style Style) IsUnderline() bool {
 // FgColor returns the foreground color information.
 func (style Style) FgColor() Style {
 	return style & 0x700
+}
+
+// Fprint prints the result of Sprintf to the given writer.
+// If the writer is not terminal, any style will be ignored.
+func (style Style) Fprintf(w io.Writer, format string, a ...interface{}) (n int, err error) {
+	if IsTerminal(w) {
+		return fmt.Fprint(w, style.Sprintf(format, a...))
+	}
+	return fmt.Fprint(w, fmt.Sprintf(format, a...))
 }
 
 // SetFgColor returns the given Style with the specified color.

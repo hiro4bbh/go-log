@@ -32,6 +32,7 @@ func main() {
 	} else {
 		fmt.Println("You are not in terminal")
 	}
+	golog.FgRed.Fprintf(os.Stdout, "Hello again!\n")
 
 	logger := golog.New(os.Stdout, nil)
 	logger.Debugf("Hello from DEBUG level\n")

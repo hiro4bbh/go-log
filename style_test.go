@@ -1,6 +1,7 @@
 package golog
 
 import (
+	"bytes"
 	"testing"
 
 	"github.com/hiro4bbh/go-assert"
@@ -36,4 +37,7 @@ func TestStyle(t *testing.T) {
 	goassert.New(t, "\033[4m\033[31mHello with Underlined Red\033[0m").Equal(FgRed.Underline(true).Sprintf("Hello with Underlined Red"))
 	goassert.New(t, "\033[31mHello with Ununderlined Red\033[0m").Equal(FgRed.Underline(false).Sprintf("Hello with Ununderlined Red"))
 	goassert.New(t, "\033[4m\033[35mHello with Underlined Magenta\033[0m").Equal(FgRed.Underline(true).SetFgColor(FgMagenta).Sprintf("Hello with Underlined Magenta"))
+	var buf bytes.Buffer
+	FgRed.Fprintf(&buf, "Hello with Red")
+	goassert.New(t, []byte("Hello with Red")).Equal(buf.Bytes())
 }
