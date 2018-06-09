@@ -58,7 +58,7 @@ func (style Style) FgColor() Style {
 	return style & 0x700
 }
 
-// Fprint prints the result of Sprintf to the given writer.
+// Fprintf prints the result of Sprintf to the given writer.
 // If the writer is not terminal, any style will be ignored.
 func (style Style) Fprintf(w io.Writer, format string, a ...interface{}) (n int, err error) {
 	if IsTerminal(w) {
