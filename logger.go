@@ -15,6 +15,8 @@ type LogLevel int
 const (
 	illegalLogLevel = LogLevel(0)
 )
+
+// The logging levels equal to the priorities.
 const (
 	DEBUG = LogLevel(1)
 	INFO  = LogLevel(2)
