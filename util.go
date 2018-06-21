@@ -12,9 +12,9 @@ import (
 // Notice that, hankaku (half-width) katakana (in Japanese) characters are contained in unicode.Katakana, but the display width should be one.
 var RuneTwoWidthTables = []*unicode.RangeTable{
 	unicode.Han, unicode.Hangul, unicode.Hiragana, unicode.Katakana,
-	&unicode.RangeTable{R16: []unicode.Range16{{0x3000, 0x303f, 1}}}, // CJK symbols and punctuations
-	&unicode.RangeTable{R16: []unicode.Range16{{0x30a0, 0x30ff, 1}}}, // zenkaku katakana
-	&unicode.RangeTable{R16: []unicode.Range16{{0xff01, 0xff60, 1}}}, // halfwidth and fullwidth forms
+	{R16: []unicode.Range16{{0x3000, 0x303f, 1}}}, // CJK symbols and punctuations
+	{R16: []unicode.Range16{{0x30a0, 0x30ff, 1}}}, // zenkaku katakana
+	{R16: []unicode.Range16{{0xff01, 0xff60, 1}}}, // halfwidth and fullwidth forms
 }
 
 // RuneZeroWidthTables is the slice of unicode.RangeTable containing the unicode characters whose display width is zero.
