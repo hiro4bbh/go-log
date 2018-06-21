@@ -8,15 +8,15 @@ import (
 // Style has the font color and decoration information.
 type Style uint64
 
+// The font decoration styles.
 const (
-	// Decoration information for Style.
 	Normal    = Style(0x00)
 	Bold      = Style(1 << 0)
 	Underline = Style(1 << 1)
 )
 
+// The foreground basic colors supported by ANSI escape codes.
 const (
-	// Foreground basic colors (supported by ANSI escape codes) for Style.
 	FgBlack   = Style(0 << 8)
 	FgRed     = Style(1 << 8)
 	FgGreen   = Style(2 << 8)
