@@ -12,7 +12,7 @@ See golog's document on [GoDoc](https://godoc.org/github.com/hiro4bbh/go-log).
 You can test the examples:
 
 ```
-GOLOG_MINLEVEL=debug go run example/main.go
-GOLOG_MINLEVEL=debug go run example/main.go | cat
-go run example/term.go
+GOLOG_MINLEVEL=debug go run example/log/main.go
+GOLOG_MINLEVEL=debug go run example/log/main.go | cat
+go run example/term/main.go
 ```
