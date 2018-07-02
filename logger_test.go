@@ -32,7 +32,7 @@ func TestLoggerDefault(t *testing.T) {
 		exitcode = code
 	}
 	var buf bytes.Buffer
-	logger := New(&buf, nil)
+	logger := New(&buf, &Parameters{})
 	goassert.New(t, DefaultMinLevel).Equal(logger.MinLevel())
 	goassert.New(t, DefaultName).Equal(logger.Name())
 	goassert.New(t, DefaultTimeFormat).Equal(logger.TimeFormat())

@@ -3,6 +3,8 @@ package golog
 import (
 	"fmt"
 	"io"
+
+	"github.com/hiro4bbh/go-term"
 )
 
 // Style has the font color and decoration information.
@@ -61,7 +63,7 @@ func (style Style) FgColor() Style {
 // Fprintf prints the result of Sprintf to the given writer.
 // If the writer is not terminal, any style will be ignored.
 func (style Style) Fprintf(w io.Writer, format string, a ...interface{}) (n int, err error) {
-	if IsTerminal(w) {
+	if goterm.IsTerminal(w) {
 		return fmt.Fprint(w, style.Sprintf(format, a...))
 	}
 	return fmt.Fprint(w, fmt.Sprintf(format, a...))

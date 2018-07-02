@@ -5,10 +5,11 @@ import (
 	"os"
 
 	"github.com/hiro4bbh/go-log"
+	"github.com/hiro4bbh/go-term"
 )
 
 func main() {
-	if golog.IsTerminal(os.Stdout) {
+	if goterm.IsTerminal(os.Stdout) {
 		fmt.Println("You are in terminal")
 
 		fmt.Println(golog.FgBlack.Sprintf("Hello with Black"))
@@ -34,7 +35,7 @@ func main() {
 	}
 	golog.FgRed.Fprintf(os.Stdout, "Hello again!\n")
 
-	logger := golog.New(os.Stdout, nil)
+	logger := golog.New(os.Stdout, &golog.Parameters{})
 	logger.Debugf("Hello from DEBUG level\n")
 	logger.Infof("Hello from INFO level")
 	logger.Warnf("Hello from WARN level")

@@ -7,6 +7,8 @@ import (
 	"os"
 	"strings"
 	"time"
+
+	"github.com/hiro4bbh/go-term"
 )
 
 // LogLevel is the level used in each logged line.
@@ -96,13 +98,6 @@ type Logger struct {
 // If params is nil, then it is filled with default values.
 // If params has some zero-value fields, then those are replaced with the corresponding default values.
 func New(out io.Writer, params *Parameters) *Logger {
-	if params == nil {
-		params = &Parameters{
-			Name:       DefaultName,
-			MinLevel:   DefaultMinLevel,
-			TimeFormat: DefaultTimeFormat,
-		}
-	}
 	if params.Name == "" {
 		params.Name = DefaultName
 	}
@@ -126,7 +121,7 @@ func (logger *Logger) Color() bool {
 	case "never":
 		return false
 	}
-	return IsTerminal(logger.out)
+	return goterm.IsTerminal(logger.out)
 }
 
 // MinLevel returns the minimum logging level.
@@ -204,7 +199,7 @@ func (logger *Logger) Log(level LogLevel, msg string) {
 }
 
 // Null is the logger writing to ioutil.Discard.
-var Null = New(ioutil.Discard, nil)
+var Null = New(ioutil.Discard, &Parameters{})
 
 func init() {
 	level, err := ParseLogLevel(os.Getenv("GOLOG_MINLEVEL"))
